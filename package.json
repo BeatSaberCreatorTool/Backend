@@ -17,6 +17,18 @@
   },
   "homepage": "https://github.com/BeatSaberCreatorTool/Backend#readme",
   "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/express-session": "^1.18.0",
+    "@types/node": "^22.8.1",
+    "@types/ws": "^8.5.12",
     "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "express-session": "^1.18.1",
+    "http": "^0.0.1-security",
+    "ws": "^8.18.0"
   }
 }
