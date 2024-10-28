@@ -1,6 +1,7 @@
 import express, { Request, Response, Router } from 'express';
 import { URLSearchParams } from 'url';
 import UserProfile from '../../types/discordUser';
+import { createUpdateUser } from '../../database/database';
 
 const router: Router = express.Router();
 const DISCORD_TOKEN_URL = 'https://discord.com/api/oauth2/token';
@@ -76,6 +77,8 @@ router.get(
 
             const userData: UserProfile = await userResponse.json();
             req.session.userProfile = userData;
+
+            createUpdateUser(userData.id, userData.username, userData.email);
 
             res.status(200).json({ message: 'Authorization successful, user data saved to session' });
         } catch (error) {

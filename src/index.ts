@@ -5,13 +5,16 @@ import ws from 'ws';
 import dotenv from 'dotenv';
 
 import sessionValidator from './middleware/sessionValidator';
+import * as database from './database/database';
+
+import UserProfile from './types/discordUser';
+
 
 // Routes
 import login from './endpoints/user/login';
 import authorize from './endpoints/user/authorize';
 
 import prot from './endpoints/test/prot';
-import UserProfile from './types/discordUser';
 
 dotenv.config();
 
@@ -60,6 +63,7 @@ app.use('/user', authorize);
 app.use('/test', sessionValidator, prot);
 
 // Start server
-server.listen(process.env.WEB_PORT, () => {
+server.listen(process.env.WEB_PORT, async () => {
+    await database.init();
     console.log(`Server started on http://localhost:${process.env.WEB_PORT}`);
 });
