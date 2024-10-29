@@ -1,27 +1,23 @@
 import http from 'http';
 import express from 'express';
 import session from 'express-session';
-import ws from 'ws';
 import dotenv from 'dotenv';
+import path from 'path';
 
 import sessionValidator from './middleware/sessionValidator';
 import * as database from './database/database';
-
 import UserProfile from './types/discordUser';
-
 
 // Routes
 import login from './endpoints/user/login';
 import authorize from './endpoints/user/authorize';
 import twitch from './endpoints/user/twitch';
-
 import prot from './endpoints/test/prot';
 
 dotenv.config();
 
 const app = express();
 const server = http.createServer(app);
-const wss = new ws.Server({ server });
 
 // Declare global session types
 declare module 'express-session' {
@@ -35,7 +31,7 @@ declare module 'express-session' {
     }
 }
 
-// Configure session middleware
+// Session configuration
 app.use(
     session({
         secret: process.env.SESSION_SECRET,
@@ -45,25 +41,19 @@ app.use(
     })
 );
 
-// WebSocket server setup
-wss.on('connection', (ws) => {
-    ws.on('message', (message) => {
-        console.log(`Received message => ${message}`);
-        ws.send(`Hello, you sent => ${message}`);
-    });
-});
+// Static file handling for 'public' folder (no need for .html extension)
+app.use(express.static(path.join(__dirname, '../public'), { extensions: ['html'] }));
 
-// Base route
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
-
-// Routes for user
+// Routes
 app.use('/user', login);
 app.use('/user', authorize);
 app.use('/user', sessionValidator, twitch);
-
 app.use('/test', sessionValidator, prot);
+
+// Custom 404 handler
+app.use((req, res) => {
+    res.status(404).sendFile(path.join(__dirname, '../public/error/404.html'));
+});
 
 // Start server
 server.listen(process.env.WEB_PORT, async () => {

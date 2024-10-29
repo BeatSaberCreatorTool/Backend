@@ -62,7 +62,7 @@ router.get(
             const channelName = userData.data[0]?.display_name; // Extract the channel name
 
             if (!channelName) {
-                res.redirect('/error/twitch');
+                res.redirect('/error/500');
             }
 
             createUpdateTwitch(req.session.userProfile.id, channelName);
@@ -72,7 +72,7 @@ router.get(
                 delete req.session.lastUrl;
                 res.redirect(lastUrl);
             } else {
-                res.redirect('/');
+                res.redirect('/dashboard/twitch');
             }
         } catch (error) {
             console.error('Authorization error:', error);

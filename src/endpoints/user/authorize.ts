@@ -86,7 +86,7 @@ router.get(
                 delete req.session.lastUrl;
                 res.redirect(lastUrl);
             } else {
-                res.redirect('/');
+                res.redirect('/dashboard');
             }
         } catch (error) {
             console.error('Authorization error:', error);

@@ -8,6 +8,7 @@ declare module 'express-session' {
         expiresIn?: number;
         tokenType?: string;
         userProfile: UserProfile;
+        lastUrl?: string;
     }
 }
 

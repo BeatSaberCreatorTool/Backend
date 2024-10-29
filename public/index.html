@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beat Saber Creator Tool</title>
+    <style>
+        :root {
+            --bg-color: #1a1a2e;
+            --text-color: #e0e0e0;
+            --primary-color: #ff2a6d;
+            --secondary-color: #05d9e8;
+            --accent-color: #d1d7e0;
+            --discord-color: #7289da;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background-color: rgba(255, 42, 109, 0.1);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(255, 42, 109, 0.2);
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        .header-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        h1 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+        }
+        .button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.25rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .button-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+        }
+        .button-primary {
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+        }
+        .button-primary:hover {
+            background-color: #ff5a8d;
+        }
+        .button-secondary {
+            background-color: var(--secondary-color);
+            color: var(--bg-color);
+        }
+        .button-secondary:hover {
+            background-color: #35e9f8;
+        }
+        .button-discord {
+            background-color: var(--discord-color);
+            color: white;
+        }
+        .button-discord:hover {
+            background-color: #8ea1e1;
+        }
+        .main-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .main-button {
+            font-size: 1.25rem;
+            padding: 1rem 2rem;
+        }
+        .feature-box {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            margin-top: 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .feature-item {
+            text-align: left;
+        }
+        .feature-item h3 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .header-buttons {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .main-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .feature-box {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">Beat Saber Creator Tools</div>
+            <div class="header-buttons">
+                <a href="/user/login" class="button button-small button-primary">Login</a>
+                <a href="/dashboard" class="button button-small button-primary">Dashboard</a>
+                <a href="/download" class="button button-small button-primary">Download</a>
+                <a href="/discord" class="button button-small button-primary">Discord</a>
+            </div>
+        </div>
+    </header>
+    <main class="container">
+        <h1>Beat Saber Creator Tools</h1>
+        <p>The most feature rich live streaming companion mod for Beat Saber</p>
+        <div class="main-buttons">
+            <a href="/user/login" class="button main-button button-discord">Login with Discord</a>
+            <a href="/download" class="button main-button button-primary">Download Mod</a>
+        </div>
+        <div class="feature-box">
+            <div class="feature-item">
+                <h3>Song Request</h3>
+                <p>Allow your viewers to become part of the experience by requesting their favorite songs with the simple <strong>!bsr</strong> command. Enhance the mood of your stream and let your audience drive the soundtrack.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Interactive Overlays</h3>
+                <p>Bring your stream to life by adding interactive overlays that display key information like Queue, Viewer Counts, Daily Stats, and much more. Keep your audience engaged with real-time updates and a dynamic streaming environment.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Community Engagement</h3>
+                <p>Empower your community to interact directly with your gameplay. Build a deeper connection by letting your viewers actively participate and influence the game, creating a truly immersive experience for everyone involved.</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
