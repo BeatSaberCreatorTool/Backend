@@ -13,6 +13,7 @@ import UserProfile from './types/discordUser';
 // Routes
 import login from './endpoints/user/login';
 import authorize from './endpoints/user/authorize';
+import twitch from './endpoints/user/twitch';
 
 import prot from './endpoints/test/prot';
 
@@ -30,6 +31,7 @@ declare module 'express-session' {
         expiresIn?: number;
         tokenType?: string;
         userProfile: UserProfile;
+        lastUrl?: string;
     }
 }
 
@@ -59,6 +61,7 @@ app.get('/', (req, res) => {
 // Routes for user
 app.use('/user', login);
 app.use('/user', authorize);
+app.use('/user', sessionValidator, twitch);
 
 app.use('/test', sessionValidator, prot);
 

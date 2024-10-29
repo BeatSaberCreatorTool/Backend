@@ -18,6 +18,7 @@ declare module 'express-session' {
         expiresIn?: number;
         tokenType?: string;
         userProfile: UserProfile;
+        lastUrl?: string;
     }
 }
 
@@ -80,7 +81,13 @@ router.get(
 
             createUpdateUser(userData.id, userData.username, userData.email);
 
-            res.status(200).json({ message: 'Authorization successful, user data saved to session' });
+            if (req.session.lastUrl) {
+                const lastUrl = req.session.lastUrl;
+                delete req.session.lastUrl;
+                res.redirect(lastUrl);
+            } else {
+                res.redirect('/');
+            }
         } catch (error) {
             console.error('Authorization error:', error);
             res.status(500).json({ error: 'Internal server error' });

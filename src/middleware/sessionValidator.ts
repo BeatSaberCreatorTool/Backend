@@ -6,6 +6,7 @@ const DISCORD_TOKEN_URL = 'https://discord.com/api/oauth2/token';
 async function sessionValidator(req: Request, res: Response, next: NextFunction) {
     // Check if the session and accessToken exist
     if (!req.session || !req.session.accessToken) {
+        req.session.lastUrl = req.originalUrl;
         return res.redirect('/user/login');
     }
 
@@ -46,6 +47,7 @@ async function sessionValidator(req: Request, res: Response, next: NextFunction)
             next(); // Proceed to the next middleware or route handler
         } catch (error) {
             console.error('Token refresh error:', error);
+            req.session.lastUrl = req.originalUrl;
             return res.redirect('/user/login'); // Redirect if refresh fails
         }
     } else {

@@ -1,6 +1,7 @@
 import { Database } from "./dataclass";
 
 export { createUpdateUser } from "./tools/createUpdateUser";
+export { createUpdateTwitch } from "./tools/createUpdateTwitch";
 
 let database: Database;
 
@@ -24,6 +25,33 @@ export async function init() {
             discord_id VARCHAR(255) NOT NULL,
             username VARCHAR(255) NOT NULL,
             email VARCHAR(255) NOT NULL
+        )
+    `);
+
+    await connection.query(`
+        CREATE TABLE IF NOT EXISTS twitch_users (
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            twitch_name VARCHAR(255) NOT NULL,
+            discord_id VARCHAR(255) NOT NULL
+        )
+    `);
+
+    await connection.query(`
+        CREATE TABLE IF NOT EXISTS authcodes (
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            code VARCHAR(255) NOT NULL,
+            user_id VARCHAR(255) NOT NULL,
+            expires_at DATETIME NOT NULL
+        )
+    `);
+
+    await connection.query(`
+        CREATE TABLE IF NOT EXISTS linked_devices (
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            user_id VARCHAR(255) NOT NULL,
+            device_id VARCHAR(255) NOT NULL,
+            device_name VARCHAR(255) NOT NULL,
+            password VARCHAR(255) NOT NULL
         )
     `);
 }

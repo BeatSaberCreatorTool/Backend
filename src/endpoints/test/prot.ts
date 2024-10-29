@@ -15,7 +15,9 @@ const router: Router = express.Router();
 
 router.get('/prot', (req: Request, res: Response) => {
 
-    res.json(req.session.userProfile);
+    res.send(`
+        <a href="${process.env.TWITCH_REDIRECT_URI}">Link twitch</a>
+        `)
 });
 
 export default router;
