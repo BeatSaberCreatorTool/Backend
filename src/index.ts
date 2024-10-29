@@ -43,6 +43,7 @@ app.use(
 
 // Static file handling for 'public' folder (no need for .html extension)
 app.use(express.static(path.join(__dirname, '../public'), { extensions: ['html'] }));
+app.use('/dashboard', sessionValidator, express.static(path.join(__dirname, '../dashboard'), { extensions: ['html'] }));
 
 // Routes
 app.use('/user', login);
