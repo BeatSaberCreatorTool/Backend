@@ -8,7 +8,8 @@
         :root {
             --bg-color: #1a1a2e;
             --text-color: #e0e0e0;
-            --primary-color: #ff2a6d;
+            --primary-color: #ff2a46;
+            --selected-color: #ff5a8d;
             --secondary-color: #05d9e8;
             --accent-color: #d1d7e0;
             --discord-color: #7289da;
@@ -91,6 +92,10 @@
         .button-secondary:hover {
             background-color: #35e9f8;
         }
+        .button-selected {
+            background-color: var(--selected-color);
+            color: var(--bg-color);
+        }
         .button-discord {
             background-color: var(--discord-color);
             color: white;
@@ -151,7 +156,7 @@
         <div class="header-content">
             <div class="logo">Beat Saber Creator Tools</div>
             <div class="header-buttons">
-                <a href="/" class="button button-small button-secondary">Home</a>
+                <a href="/" class="button button-small button-selected">Home</a>
                 <a href="/dashboard" class="button button-small button-primary">Dashboard</a>
                 <a href="/user/login" class="button button-small button-primary">Login</a>
                 <a href="/download" class="button button-small button-primary">Download</a>

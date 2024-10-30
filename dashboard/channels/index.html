@@ -136,23 +136,6 @@
             margin-right: 0.5rem;
             fill: var(--text-color);
         }
-        .nav-user {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 0.25rem;
-            margin-top: 1rem;
-        }
-        .nav-avatar {
-            width: 2rem;
-            height: 2rem;
-            border-radius: 50%;
-        }
-        .nav-user-name {
-            font-weight: bold;
-        }
         .submenu {
             list-style-type: none;
             padding-left: 1rem;
@@ -217,13 +200,13 @@
             <button class="menu-toggle">☰ Menu</button>
             <ul class="nav-list">
                 <li class="nav-item">
-                    <a href="#" class="nav-link nav-current">Dashboard Home</a>
+                    <a href="#" class="nav-link">Dashboard Home</a>
                 </li>
                 <li class="nav-item">
                     <a href="/dashboard/link" class="nav-link">Linked Devices</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/dashboard/channels" class="nav-link">Your Channels</a>
+                    <a href="/dashboard/channels" class="nav-link nav-current">Your Channels</a>
                     <ul class="submenu">
                         <li><a href="/dashboard/channels/twitch" class="nav-link">Twitch</a></li>
                         <li><a href="/dashboard/channels/discord" class="nav-link">Discord</a></li>
@@ -249,18 +232,6 @@
                         Logout
                     </a>
                 </li>
-                <li class="nav-user">
-                    <img class="nav-avatar" id="user-avatar" alt="User Avatar">
-                    <span class="nav-user-name" id="user-name"></span>
-                </li>
-                <li class="nav-user">
-                    <img class="nav-avatar" id="twitch-avatar" src="/dashboard/media/twitch.webp" alt="User Avatar">
-                    <span class="nav-user-name" id="twitch-name">No Twitch Account</span>
-                </li>
-                <li class="nav-user">
-                    <img class="nav-avatar" id="discord-avatar" src="/dashboard/media/discord.png" alt="User Avatar">
-                    <span class="nav-user-name" id="discord-name">No Discord Server</span>
-                </li>
             </ul>
         </nav>
         <main class="content-box">
@@ -283,24 +254,6 @@
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             document.querySelector('.nav-list').classList.toggle('active');
         });
-
-        
-        async function loadUser() {
-            const response = await fetch('/api/getuser');
-
-            if (!response.ok) {
-                console.error('Failed to load user data:', response);
-                return;
-            }
-
-            const user = await response.json();
-
-            document.getElementById('user-avatar').src = "https://cdn.discordapp.com/avatars/" + user.id + "/" + user.avatar + ".png";
-            document.getElementById('user-name').textContent = user.global_name;
-
-        }
-
-        loadUser();
     </script>
 </body>
 </html>

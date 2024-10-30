@@ -7,7 +7,7 @@ async function sessionValidator(req: Request, res: Response, next: NextFunction)
     // Check if the session and accessToken exist
     if (!req.session || !req.session.accessToken) {
         req.session.lastUrl = req.originalUrl;
-        return res.redirect('/user/login');
+        return res.redirect(process.env.DISCORD_REDIRECT_URI);
     }
 
     // Check if the token has expired
@@ -48,7 +48,7 @@ async function sessionValidator(req: Request, res: Response, next: NextFunction)
         } catch (error) {
             console.error('Token refresh error:', error);
             req.session.lastUrl = req.originalUrl;
-            return res.redirect('/user/login'); // Redirect if refresh fails
+            return res.redirect(process.env.DISCORD_REDIRECT_URI); // Redirect if refresh fails
         }
     } else {
         // Token is still valid, continue

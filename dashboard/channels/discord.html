@@ -136,23 +136,6 @@
             margin-right: 0.5rem;
             fill: var(--text-color);
         }
-        .nav-user {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 0.25rem;
-            margin-top: 1rem;
-        }
-        .nav-avatar {
-            width: 2rem;
-            height: 2rem;
-            border-radius: 50%;
-        }
-        .nav-user-name {
-            font-weight: bold;
-        }
         .submenu {
             list-style-type: none;
             padding-left: 1rem;
@@ -217,7 +200,7 @@
             <button class="menu-toggle">☰ Menu</button>
             <ul class="nav-list">
                 <li class="nav-item">
-                    <a href="#" class="nav-link nav-current">Dashboard Home</a>
+                    <a href="#" class="nav-link">Dashboard Home</a>
                 </li>
                 <li class="nav-item">
                     <a href="/dashboard/link" class="nav-link">Linked Devices</a>
@@ -226,7 +209,7 @@
                     <a href="/dashboard/channels" class="nav-link">Your Channels</a>
                     <ul class="submenu">
                         <li><a href="/dashboard/channels/twitch" class="nav-link">Twitch</a></li>
-                        <li><a href="/dashboard/channels/discord" class="nav-link">Discord</a></li>
+                        <li><a href="/dashboard/channels/discord" class="nav-link nav-current">Discord</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -248,18 +231,6 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="nav-icon"><!--Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M320 32c0-9.9-4.5-19.2-12.3-25.2S289.8-1.4 280.2 1l-179.9 45C79 51.3 64 70.5 64 92.5L64 448l-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l64 0 192 0 32 0 0-32 0-448zM256 256c0 17.7-10.7 32-24 32s-24-14.3-24-32s10.7-32 24-32s24 14.3 24 32zm96-128l96 0 0 352c0 17.7 14.3 32 32 32l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-320c0-35.3-28.7-64-64-64l-96 0 0 64z"/></svg>
                         Logout
                     </a>
-                </li>
-                <li class="nav-user">
-                    <img class="nav-avatar" id="user-avatar" alt="User Avatar">
-                    <span class="nav-user-name" id="user-name"></span>
-                </li>
-                <li class="nav-user">
-                    <img class="nav-avatar" id="twitch-avatar" src="/dashboard/media/twitch.webp" alt="User Avatar">
-                    <span class="nav-user-name" id="twitch-name">No Twitch Account</span>
-                </li>
-                <li class="nav-user">
-                    <img class="nav-avatar" id="discord-avatar" src="/dashboard/media/discord.png" alt="User Avatar">
-                    <span class="nav-user-name" id="discord-name">No Discord Server</span>
                 </li>
             </ul>
         </nav>
@@ -283,24 +254,6 @@
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             document.querySelector('.nav-list').classList.toggle('active');
         });
-
-        
-        async function loadUser() {
-            const response = await fetch('/api/getuser');
-
-            if (!response.ok) {
-                console.error('Failed to load user data:', response);
-                return;
-            }
-
-            const user = await response.json();
-
-            document.getElementById('user-avatar').src = "https://cdn.discordapp.com/avatars/" + user.id + "/" + user.avatar + ".png";
-            document.getElementById('user-name').textContent = user.global_name;
-
-        }
-
-        loadUser();
     </script>
 </body>
 </html>

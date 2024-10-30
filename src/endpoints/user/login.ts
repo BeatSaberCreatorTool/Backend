@@ -3,8 +3,11 @@ import express from 'express';
 
 const router = express.Router();
 
-router.get('/login', (req, res) => {
-  res.redirect(process.env.DISCORD_REDIRECT_URI);
+import sessionValidator from '../../middleware/sessionValidator';
+
+router.get('/login', sessionValidator, (req, res) => {
+  
+  res.redirect("/dashboard");
 });
 
 export default router;

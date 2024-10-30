@@ -10,9 +10,13 @@ import UserProfile from './types/discordUser';
 
 // Routes
 import login from './endpoints/user/login';
+import logout from './endpoints/user/logout';
 import authorize from './endpoints/user/authorize';
 import twitch from './endpoints/user/twitch';
 import prot from './endpoints/test/prot';
+
+// Api Routes
+import getuser from './endpoints/api/getUser';
 
 dotenv.config();
 
@@ -47,9 +51,13 @@ app.use('/dashboard', sessionValidator, express.static(path.join(__dirname, '../
 
 // Routes
 app.use('/user', login);
+app.use('/user', logout);
 app.use('/user', authorize);
 app.use('/user', sessionValidator, twitch);
 app.use('/test', sessionValidator, prot);
+
+// Api Routes
+app.use('/api', sessionValidator, getuser);
 
 // Custom 404 handler
 app.use((req, res) => {
