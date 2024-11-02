@@ -4,201 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Beat Saber Creator Tool</title>
-    <style>
-        :root {
-            --bg-color: #1a1a2e;
-            --text-color: #e0e0e0;
-            --primary-color: #ff2a46;
-            --selected-color: #ff5a8d;
-            --secondary-color: #05d9e8;
-            --accent-color: #d1d7e0;
-            --discord-color: #7289da;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        header {
-            background-color: rgba(255, 42, 109, 0.1);
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(255, 42, 109, 0.2);
-        }
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-        .header-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-        .button {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 0.25rem;
-            font-size: 0.875rem;
-            font-weight: 600;
-            text-decoration: none;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        .button-primary {
-            background-color: var(--primary-color);
-            color: var(--bg-color);
-        }
-        .button-primary:hover {
-            background-color: #ff5a8d;
-        }
-        .button-secondary {
-            background-color: var(--secondary-color);
-            color: var(--bg-color);
-        }
-        .button-secondary:hover {
-            background-color: #35e9f8;
-        }
-        .button-selected {
-            background-color: var(--selected-color);
-            color: var(--bg-color);
-        }
-        .button-discord {
-            background-color: var(--discord-color);
-            color: white;
-        }
-        .button-discord:hover {
-            background-color: #8ea1e1;
-        }
-        .dashboard-container {
-            display: flex;
-            flex-grow: 1;
-            padding: 2rem 0.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            gap: 1rem;
-        }
-        .nav-box {
-            flex: 0 0 250px;
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 0.5rem;
-            padding: 0.5rem;
-            box-sizing: border-box;
-        }
-        .content-box {
-            flex-grow: 1;
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 0.5rem;
-            padding: 2rem;
-        }
-        .nav-list {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-        .nav-item {
-            margin-bottom: 0.25rem;
-        }
-        .nav-link {
-            color: var(--text-color);
-            text-decoration: none;
-            display: block;
-            padding: 0.25rem 0.5rem;
-            border-radius: 0.25rem;
-            transition: background-color 0.3s;
-            display: flex;
-            align-items: center;
-            flex-direction: row;
-        }
-        .nav-link:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        .nav-current {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-        .nav-icon {
-            width: 1rem;
-            height: 1rem;
-            margin-right: 0.5rem;
-            fill: var(--text-color);
-        }
-        .nav-user {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 0.25rem;
-            margin-top: 1rem;
-        }
-        .nav-avatar {
-            width: 2rem;
-            height: 2rem;
-            border-radius: 50%;
-        }
-        .nav-user-name {
-            font-weight: bold;
-        }
-        .submenu {
-            list-style-type: none;
-            padding-left: 1rem;
-            margin-top: 0.25rem;
-        }
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-color);
-            font-size: 1.5rem;
-            cursor: pointer;
-            width: 100%;
-            text-align: left;
-            padding: 0.5rem;
-            line-height: 1;
-        }
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            .header-buttons {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .dashboard-container {
-                flex-direction: column;
-                padding: 1rem 0.5rem;
-            }
-            .nav-box {
-                flex: none;
-                width: 100%;
-            }
-            .menu-toggle {
-                display: block;
-                margin-bottom: 0.5rem;
-            }
-            .nav-list {
-                display: none;
-            }
-            .nav-list.active {
-                display: block;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="/dashboard/boilerplate/style.css">
 </head>
 <body>
     <header>
@@ -220,28 +26,28 @@
                     <a href="#" class="nav-link nav-current">Dashboard Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/dashboard/link" class="nav-link">Linked Devices</a>
+                    <a href="#link" class="nav-link">Linked Devices</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/dashboard/channels" class="nav-link">Your Channels</a>
+                    <a href="#channels" class="nav-link">Your Channels</a>
                     <ul class="submenu">
-                        <li><a href="/dashboard/channels/twitch" class="nav-link">Twitch</a></li>
-                        <li><a href="/dashboard/channels/discord" class="nav-link">Discord</a></li>
+                        <li><a href="#channels/twitch" class="nav-link">Twitch</a></li>
+                        <li><a href="#channels/discord" class="nav-link">Discord</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="/dashboard/statistics" class="nav-link">Statistics & Information</a>
+                    <a href="#statistics" class="nav-link">Statistics & Information</a>
                     <ul class="submenu">
-                        <li><a href="/dashboard/statistics/statistics" class="nav-link">Statistics</a></li>
-                        <li><a href="/dashboard/statistics/sessions" class="nav-link">Sessions</a></li>
-                        <li><a href="/dashboard/statistics/log" class="nav-link">Event Log</a></li>
+                        <li><a href="#statistics/statistics" class="nav-link">Statistics</a></li>
+                        <li><a href="#statistics/sessions" class="nav-link">Sessions</a></li>
+                        <li><a href="#statistics/log" class="nav-link">Event Log</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="/dashboard/community" class="nav-link">Community</a>
+                    <a href="#community" class="nav-link">Community</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/dashboard/settings" class="nav-link">Settings</a>
+                    <a href="#settings" class="nav-link">Settings</a>
                 </li>
                 <li class="nav-item">
                     <a href="/user/logout" class="nav-link">
@@ -253,18 +59,11 @@
                     <img class="nav-avatar" id="user-avatar" alt="User Avatar">
                     <span class="nav-user-name" id="user-name"></span>
                 </li>
-                <li class="nav-user">
-                    <img class="nav-avatar" id="twitch-avatar" src="/dashboard/media/twitch.webp" alt="User Avatar">
-                    <span class="nav-user-name" id="twitch-name">No Twitch Account</span>
-                </li>
-                <li class="nav-user">
-                    <img class="nav-avatar" id="discord-avatar" src="/dashboard/media/discord.png" alt="User Avatar">
-                    <span class="nav-user-name" id="discord-name">No Discord Server</span>
-                </li>
             </ul>
         </nav>
-        <main class="content-box">
+        <main class="content-box" id="index-class">
             <h1>Welcome to Your Dashboard!</h1>
+            <hr>
             <p>Welcome to the central hub for managing your accounts. From here, you can access detailed statistics, customize your settings, monitor channel activity, and more.</p>
             <h2>What's new?</h2>
             <ul>
@@ -278,29 +77,10 @@
                 <a href="#" class="button button-primary">Clear Queue</a>
             </div>
         </main>
+        <main class="content-box invisible" id="content-class">
+
+        </main>
     </div>
-    <script>
-        document.querySelector('.menu-toggle').addEventListener('click', function() {
-            document.querySelector('.nav-list').classList.toggle('active');
-        });
-
-        
-        async function loadUser() {
-            const response = await fetch('/api/getuser');
-
-            if (!response.ok) {
-                console.error('Failed to load user data:', response);
-                return;
-            }
-
-            const user = await response.json();
-
-            document.getElementById('user-avatar').src = "https://cdn.discordapp.com/avatars/" + user.id + "/" + user.avatar + ".png";
-            document.getElementById('user-name').textContent = user.global_name;
-
-        }
-
-        loadUser();
-    </script>
+    <script src="/dashboard/boilerplate/script.js"></script>
 </body>
 </html>

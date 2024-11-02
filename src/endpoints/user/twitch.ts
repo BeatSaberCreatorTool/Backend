@@ -72,7 +72,7 @@ router.get(
                 delete req.session.lastUrl;
                 res.redirect(lastUrl);
             } else {
-                res.redirect('/dashboard/twitch');
+                res.redirect('/dashboard/#channels/twitch');
             }
         } catch (error) {
             console.error('Authorization error:', error);

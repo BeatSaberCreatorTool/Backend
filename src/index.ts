@@ -13,10 +13,12 @@ import login from './endpoints/user/login';
 import logout from './endpoints/user/logout';
 import authorize from './endpoints/user/authorize';
 import twitch from './endpoints/user/twitch';
+import logintwitch from './endpoints/user/logintwitch';
 import prot from './endpoints/test/prot';
 
 // Api Routes
-import getuser from './endpoints/api/getUser';
+import userAPI from './endpoints/api/user';
+import twitchAPI from './endpoints/api/twitch';
 
 dotenv.config();
 
@@ -54,10 +56,13 @@ app.use('/user', login);
 app.use('/user', logout);
 app.use('/user', authorize);
 app.use('/user', sessionValidator, twitch);
+app.use('/user', sessionValidator, logintwitch);
 app.use('/test', sessionValidator, prot);
 
+
 // Api Routes
-app.use('/api', sessionValidator, getuser);
+app.use('/api/user', sessionValidator, userAPI);
+app.use('/api/twitch', sessionValidator, twitchAPI);
 
 // Custom 404 handler
 app.use((req, res) => {
