@@ -166,6 +166,9 @@ header {
 .invisible {
     display: none;
 }
+.link {
+    color: var(--primary-color);
+}
 @media (max-width: 768px) {
     .header-content {
         flex-direction: column;
